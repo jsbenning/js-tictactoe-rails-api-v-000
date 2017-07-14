@@ -1,7 +1,7 @@
 // Code your JavaScript / jQuery solution here
 var turn = 0;
 var board = ['', '', '', '', '', '', '', '', ''];
-//var table = document.querySelector('table');
+
 function player() {
   if (turn % 2 == 0) {
     return "X";
@@ -11,6 +11,15 @@ function player() {
 }
 
 function attachListeners() {
+  const squares = window.document.querySelectorAll('td');
+  for (var i = 0; i < 9; i++) {
+    squares[i].onclick = function() {
+      if (this.innerHTML !== "X" && this.innerHTML !== "O" ){
+        doTurn(this);
+      }     
+    }
+  }
+
   Array.prototype.contains = function(val) {
     for (var i = 0; i < this.length; i++) {
       if (this[i] == val) {
